@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> San Valentin 💌</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <audio id="musica">
@@ -10,7 +11,7 @@
 </audio>
 <style>
 body {
-    margin: 10;
+    margin: 0;
     padding: 0;
     overflow: hidden;
     background-image: url("Atardecer.png");
@@ -44,6 +45,15 @@ body {
         opacity: 0;
     }
 }
+@media (max-width: 600px) {
+    #carta {
+        font-size: 12px;
+    }
+
+    #gato img {
+        height: 120px;
+    }
+}
 
 /* Centro con gato */
 #centro {
@@ -62,9 +72,10 @@ body {
     background: white;
     color: black;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
     font-size: 14px;
-    width: 300px;
+    width: 85%;
+    max-width:320px;
     cursor: pointer;
     transition: all 0.5s ease;
 }
@@ -116,7 +127,7 @@ function crearCorazon() {
     const imagen = document.createElement("img");
     corazon.classList.add("corazon");
     imagen.src = "Corazon.png";
-    imagen.style.height = Math.random() * 10 + 40 + "px";   
+    imagen.style.height = Math.random() * 8 + 20 + "px";   
     corazon.appendChild(imagen); 
     corazon.style.left = Math.random() * 100 + "vw";
     corazon.style.animationDuration = "5s";

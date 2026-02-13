@@ -3,14 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <title> San Valentin 💌</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<audio id="musica">
+    <source src="TeAmoyMas.mp3" type="audio/mpeg">
+    
+</audio>
 <style>
 body {
-    margin: 0;
+    margin: 10;
     padding: 0;
     overflow: hidden;
-    background-color: #0d001a;
-    font-family: Libre Baskerville;
+    background-image: url("Atardecer.png");
+    background-size: cover;
+    
+    background-repeat: no-repeat;
+    font-family: 'Press Start 2P', cursive;
 }
 
 #contenedor {
@@ -21,9 +28,8 @@ body {
 
 .corazon {
     position: absolute;
-    top: -20px;
-    font-size: 16px;
-    color: #ff4da4;
+    top: -80px;
+ 
     animation: caer linear infinite;
     opacity: 0.8;
 }
@@ -46,22 +52,42 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: white;
+    
 }
 
-#gato {
-    font-size: 80px;
-}
+
 
 #carta {
     margin-top: 10px;
     background: white;
     color: black;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
-    font-size: 16px;
-    width: 260px;
+    font-size: 14px;
+    width: 300px;
+    cursor: pointer;
+    transition: all 0.5s ease;
 }
+
+#abrirTexto {
+    font-size: 18px;
+}
+
+.oculto {
+    opacity: 0;
+    transform: scale(0.8);
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: scale(1);
+    max-height: 500px;
+    margin-top: 10px;
+}
+
 </style>
 </head>
 
@@ -70,22 +96,30 @@ body {
 <div id="contenedor"></div>
 
 <div id="centro">
-    <div id="gato">🐱💌</div>
-    <div id="carta">
-        Me pica la cola 💖
+    <div id="gato"><img src ="Gatos.png" height="150"></div>
+    <div id="carta" onclick="abrirCarta()">
+    <div id="abrirTexto">ABRIR</div>
+
+    <div id="mensaje" class="oculto">
+        <h3>Feliz San Valentín Mi Vida</h3>
+        <p>
+            Te amo mucho mi amor preciosa, gracias por darme un amor tan hermoso y intenso
+        </p>
     </div>
+</div>
+
 </div>
 
 <script>
 function crearCorazon() {
     const corazon = document.createElement("div");
+    const imagen = document.createElement("img");
     corazon.classList.add("corazon");
-
-    // Corazón estilo pixel
-    corazon.innerHTML = "❤";
-
+    imagen.src = "Corazon.png";
+    imagen.style.height = Math.random() * 10 + 40 + "px";   
+    corazon.appendChild(imagen); 
     corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.animationDuration = Math.random() * 3 + 2 + "s";
+    corazon.style.animationDuration = "5s";
     corazon.style.fontSize = Math.random() * 10 + 10 + "px";
 
     document.getElementById("contenedor").appendChild(corazon);
@@ -96,6 +130,17 @@ function crearCorazon() {
 }
 
 setInterval(crearCorazon, 150);
+function abrirCarta() {
+    const mensaje = document.getElementById("mensaje");
+    const abrirTexto = document.getElementById("abrirTexto");
+    const musica = document.getElementById("musica");
+
+    mensaje.classList.add("visible");
+    abrirTexto.style.display = "none";
+
+    musica.play();
+}
+
 </script>
 
 </body>
